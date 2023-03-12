@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private int Health;
     public HealthController healthController;
     public Gameovercontroller gameovercontroller;
+    //public SoundManager soundmanager;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -109,7 +110,8 @@ public class PlayerController : MonoBehaviour
         {
             Rigid2D.AddForce(new Vector2(0f, jump), ForceMode2D.Impulse);
         }
-
+        MovementSound();
+        //SoundManager.Instance.Play(SoundManager.Sounds.Playermove);
     }
     void AnimationMade(float speed, float jumpinput)
     {
@@ -160,5 +162,9 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Death", true);
 
         }
+    }
+    public void MovementSound()
+    {
+        SoundManager.Instance.Play(SoundManager.Sounds.Playermove);
     }
 }
